@@ -1,6 +1,26 @@
 "use strict";
 
-const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели", "");
+
+let numberOfFilms;
+do {
+   numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+
+   if (numberOfFilms <= 10) {
+      alert("Просмотренно довольно мало фильмов");
+
+   } else if (numberOfFilms > 10) {
+      alert("Вы классический зритель");
+
+   } else if (numberOfFilms > 30) {
+      alert("Вы киноман");
+   } else {
+      alert('Произошла ошибка');
+      continue;
+   }
+} while (!numberOfFilms);
+
+// const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели", "");
+
 
 const personalVovieDB = {
    count: numberOfFilms,
