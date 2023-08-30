@@ -1,25 +1,6 @@
 "use strict";
 
-
-let numberOfFilms;
-do {
-   numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
-
-   if (numberOfFilms <= 10) {
-      alert("Просмотренно довольно мало фильмов");
-
-   } else if (numberOfFilms > 10) {
-      alert("Вы классический зритель");
-
-   } else if (numberOfFilms > 30) {
-      alert("Вы киноман");
-   } else {
-      alert('Произошла ошибка');
-      continue;
-   }
-} while (!numberOfFilms);
-
-// const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели", "");
+let numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
 
 
 const personalVovieDB = {
@@ -30,46 +11,50 @@ const personalVovieDB = {
    privat: false,
 };
 
-let a, b;
+let toggle = 0;
 
-a = +"dsdfdsf"
-console.log(a);
+while (toggle < 2) {
+   const
+      a = prompt("Один из последних просмотренных фильмов?", ""),
+      b = prompt("На сколька оцените его?", '');
 
-for (let i = 0; i < 2; i++) {
-   let toggle = true;
-   do {
-      a = prompt("Один из последних просмотренных фильмов?", "");
-      // console.log(a.length);
-      if (a.length === 0) {
-         alert("Всетаки ответьте на вопрос");
-         toggle = false;
-      } else if (a.length >= 50) {
-         console.log(a.length);
-         alert("Введите не больше 50-и символов");
-         toggle = false;
-      } else {
-         toggle = true;
-      }
-   } while (toggle === false);
+   if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+      personalVovieDB.movies[a] = b;
+      console.log('done');
+      toggle++;
+   } else {
+      console.log('error');
+      toggle--;
+   }
 
-   do {
-      b = +prompt("На сколько оцените его?", "");
-      if (b.length === 0) {
-         alert("Введите оценку.");
-         toggle = false;
-      } else if (isNaN(b)) {
-         alert("Введите число");
-         toggle = false;
-      } else {
-         toggle = true;
-      }
-   } while (toggle === false);
-
-   personalVovieDB.movies[a] = b;
 }
 
+/* 
+for (let i = 0; i < 2; i++) {
 
-// let a = "";
-// let g = a.length;
-// console.log(`g = ${g}`);
+   const
+      a = prompt("Один из последних просмотренных фильмов?", ""),
+      b = prompt("На сколька оцените его?", '');
+
+   if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+      personalVovieDB.movies[a] = b;
+      console.log('done');
+   } else {
+      console.log('error');
+      i--;
+   }
+}
+ */
+
+/* 
+if (personalVovieDB.count < 10) {
+   console.log('Просмотренно довольно мало фильмов');
+} else if (personalVovieDB.count >= 10 && personalVovieDB.count < 30) {
+   console.log('Вы классический зритель');
+} else if (personalVovieDB.count >= 30) {
+   console.log('Вы киноман');
+} else {
+   console.log('Произошла ошибка');
+}
+ */
 console.log(personalVovieDB);
